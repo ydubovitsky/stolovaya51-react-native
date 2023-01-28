@@ -4,8 +4,7 @@ import MealTimeComponent from "./components/meal-time.component";
 
 const imageSource = require("./images/brooke-lark-HlNcigvUi4Q-unsplash.jpg");
 
-const MainScreen = (): JSX.Element => {
-  const getCurrentDate = () => new Date().toLocaleDateString();
+const MenuScreen = (): JSX.Element => {
 
   return (
     <View style={styles.container}>
@@ -36,8 +35,9 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   menuContainer: {
+    padding: 5,
     flex: 4,
   },
 });
 
-export default MainScreen;
+export default MenuScreen;

@@ -1,15 +1,21 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import StartScreen from "../screens/start/start.screen";
-import MainScreen from "../screens/main/main.screen";
+import MenuScreen from "../screens/menu/menu.screen";
+import AccountScreen from "../screens/account/account.screen";
+import AboutScreen from "../screens/about/about.screen";
 
 export type MainStackParamList = {
-  StartScreen: undefined;
-  MainScreen: undefined;
+  MenuScreen: undefined;
+};
+
+export type BottomTabNavigatorParamList = {
+  Меню: undefined;
+  Аккаунт: undefined;
+  "О приложении": undefined;
 };
 
 const Stack = createStackNavigator<MainStackParamList>();
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();
 
 const MainStackNavigator = () => {
   return (
@@ -18,22 +24,21 @@ const MainStackNavigator = () => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="StartScreen" component={StartScreen} />
-      <Stack.Screen name="MainScreen" component={MyTabs} />
+      <Stack.Screen name="MenuScreen" component={BottomTabNavigator} />
     </Stack.Navigator>
   );
 };
 
-const MyTabs = () => {
+const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Tab.Screen name="Menu" component={MainScreen} />
-      <Tab.Screen name="Info" component={MainScreen} />
-      <Tab.Screen name="Account" component={MainScreen} />
+      <Tab.Screen name="Меню" component={MenuScreen} />
+      <Tab.Screen name="Аккаунт" component={AccountScreen} />
+      <Tab.Screen name="О приложении" component={AboutScreen} />
     </Tab.Navigator>
   );
 };
