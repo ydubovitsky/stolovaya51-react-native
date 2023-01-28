@@ -9,3 +9,10 @@ https://github.com/oblador/react-native-animatable
 
 ### Free logo maker
 https://www.adobe.com/express/create/logo
+
+### Navigation with TS
+https://reactnavigation.org/docs/typescript/
+https://github.com/react-navigation/react-navigation/issues/10802
+
+### Build project APK
+https://docs.expo.dev/build-reference/apk/
