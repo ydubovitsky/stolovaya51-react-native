@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "dining-room-niitp-react-native",
+    "name": "Столовая Нии Тп",
     "slug": "dining-room-niitp-react-native",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon_.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash_.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/adaptive-icon_.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.y.dubovitsky.diningroomniitpreactnative"
@@ -32,7 +32,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "01e42f05-ebb1-4d75-975f-f4247f037f16"
+        "projectId": "b3fddf6f-f5dc-488b-9a4f-fe992bfb94ba"
       }
     }
   }

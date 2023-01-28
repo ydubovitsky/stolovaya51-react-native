@@ -14,5 +14,8 @@ https://www.adobe.com/express/create/logo
 https://reactnavigation.org/docs/typescript/
 https://github.com/react-navigation/react-navigation/issues/10802
 
-### Build project APK
+### Build project APK (eas build -p android --profile apk)
 https://docs.expo.dev/build-reference/apk/
+
+### Create Google Developer Account
+https://gogov.ru/news/887542
