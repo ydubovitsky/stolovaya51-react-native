@@ -1,10 +1,15 @@
 import React from "react";
-import { Image, ScrollView, StyleSheet, View, Text } from "react-native";
+import { StackScreenProps } from "@react-navigation/stack/lib/typescript/src/types";
+import { Image, ScrollView, StyleSheet, View } from "react-native";
 import MealTimeComponent from "./components/meal-time.component";
+import { BottomTabNavigatorParamList } from "../../routes/main-stack-navigator.route";
 
 const imageSource = require("./images/brooke-lark-HlNcigvUi4Q-unsplash.jpg");
 
-const MenuScreen = (): JSX.Element => {
+const MenuScreen = ({
+  route,
+  navigation,
+}: StackScreenProps<BottomTabNavigatorParamList, "Меню">): JSX.Element => {
 
   return (
     <View style={styles.container}>
@@ -13,6 +18,7 @@ const MenuScreen = (): JSX.Element => {
       </View>
       <View style={styles.menuContainer}>
         <ScrollView>
+          <MealTimeComponent />
           <MealTimeComponent />
           <MealTimeComponent />
           <MealTimeComponent />
