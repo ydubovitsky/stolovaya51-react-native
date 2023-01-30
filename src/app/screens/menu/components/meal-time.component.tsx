@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { MenuItemInterface } from "../../../../types";
 
 const json = {
   name: "Завтрак",
@@ -27,21 +28,26 @@ const json = {
   ],
 };
 
-const MealTimeComponent = () : JSX.Element => {
+type MealTimeComponentProps = {
+  name: string,
+  menuItems: MenuItemInterface[]
+}
+
+const MealTimeComponent: React.FC<MealTimeComponentProps> = ({name, menuItems}) : JSX.Element => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.mealTimeTitle}>{json.name}</Text>
+    <View style={styles.container} key={name}>
+      <Text style={styles.mealTimeTitle}>{name}</Text>
       <View style={styles.menuItemsContainer}>
-        {json.menuItems.map((menuItem) => (
-          <View style={styles.menuItem} key={menuItem.name}>
-            <View style={styles.textContainer}>
-              <Text>{menuItem.name}</Text>
+        {menuItems?.map((menuItem) => (
+          <View style={styles.menuItem} key={menuItem.id}>
+            <View style={styles.mealItemName}>
+              <Text>{menuItem.mealItem?.name}</Text>
             </View>
-            <View style={styles.textContainer}>
+            <View style={styles.mealItemPortion}>
               <Text>{menuItem.portion}</Text>
             </View>
-            <View style={styles.textContainer}>
-              <Text>{menuItem.cost}</Text>
+            <View style={styles.mealItemCost}>
+              <Text>{menuItem.cost} р.</Text>
             </View>
           </View>
         ))}
@@ -80,8 +86,18 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     padding: 10,
   },
-  textContainer: {
+  mealItemName: {
     flex: 1,
+    padding: 2,
+  },
+  mealItemPortion: {
+    flex: 1,
+    padding: 2,
+    alignItems: "center"
+  },
+  mealItemCost: {
+    flex: 1,
+    padding: 2,
     alignItems: "center"
   }
 });
