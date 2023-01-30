@@ -10,6 +10,7 @@ import { convertDateToCustomDate } from "../../../utils/date.util";
 import { useAppSelector } from "../../../redux/hooks";
 import { menuSelector } from "../../../redux/menu/menu.slice";
 import { MenuInterface } from "../../../types";
+import * as Animatable from "react-native-animatable";
 
 const imageSource = require("./images/brooke-lark-HlNcigvUi4Q-unsplash.jpg");
 
@@ -27,12 +28,14 @@ const MenuScreen = ({
 
   const showMenuByDayElements = (): JSX.Element => (
     <ScrollView>
-      {menu.menuEntities?.map((entity) => (
-        <MealTimeComponent
-          name={entity.name}
-          menuItems={entity.menuItems}
+      {menu.menuEntities?.map((entity, idx) => (
+        <Animatable.View
+          animation={idx % 2 === 0 ? "bounceInLeft" : "bounceInRight"}
+          duration={1500}
           key={entity.name}
-        />
+        >
+          <MealTimeComponent name={entity.name} menuItems={entity.menuItems} />
+        </Animatable.View>
       ))}
     </ScrollView>
   );
@@ -40,7 +43,9 @@ const MenuScreen = ({
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={imageSource} style={styles.image} />
+        <Animatable.View animation="bounceInDown" duration={1500}>
+          <Image source={imageSource} style={styles.image} />
+        </Animatable.View>
       </View>
       <View style={styles.menuContainer}>{showMenuByDayElements()}</View>
     </View>
