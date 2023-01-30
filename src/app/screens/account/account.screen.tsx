@@ -7,6 +7,8 @@ import {
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { BottomTabNavigatorParamList } from "../../routes/main-stack-navigator.route";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 
 /**
  * StartScreen functional component!
@@ -19,11 +21,11 @@ const AccountScreen = ({
 }: StackScreenProps<BottomTabNavigatorParamList, "Аккаунт">): JSX.Element => {
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Animatable.View animation="zoomInUp">
         <Text>Account Screnn</Text>
       </Animatable.View>
-    </View>
+    </SafeAreaView>
   );
 };
 

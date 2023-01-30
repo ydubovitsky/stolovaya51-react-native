@@ -8,9 +8,7 @@ import MainStackNavigator from "./src/app/routes/main-stack-navigator.route";
 const App = (): JSX.Element => {
   return (
     <NavigationContainer>
-      <SafeAreaView style={styles.container}>
-        <MainStackNavigator />
-      </SafeAreaView>
+      <MainStackNavigator />
     </NavigationContainer>
   );
 };

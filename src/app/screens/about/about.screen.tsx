@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { BottomTabNavigatorParamList } from "../../routes/main-stack-navigator.route";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 /**
  * StartScreen functional component!
@@ -19,11 +20,11 @@ const AboutScreen = ({
 }: StackScreenProps<BottomTabNavigatorParamList, "О приложении">): JSX.Element => {
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Animatable.View animation="zoomInUp">
         <Text>О приложении</Text>
       </Animatable.View>
-    </View>
+    </SafeAreaView>
   );
 };
 
