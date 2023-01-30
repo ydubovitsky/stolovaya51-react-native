@@ -11,6 +11,7 @@ import { useAppSelector } from "../../../redux/hooks";
 import { menuSelector } from "../../../redux/menu/menu.slice";
 import { MenuInterface } from "../../../types";
 import * as Animatable from "react-native-animatable";
+import { dumbMenuData } from "../../../data/menu-dumb-data";
 
 const imageSource = require("./images/brooke-lark-HlNcigvUi4Q-unsplash.jpg");
 
@@ -20,7 +21,8 @@ const MenuScreen = ({
 }: StackScreenProps<BottomTabNavigatorParamList, "Меню">): JSX.Element => {
   const dispatch = useDispatch();
   const [date, setDate] = useState(new Date());
-  const menu: MenuInterface = useAppSelector(menuSelector);
+  // const menu: MenuInterface = useAppSelector(menuSelector);
+  const menu = dumbMenuData;
 
   useEffect(() => {
     dispatch(getMenuByCustomDateAsync(convertDateToCustomDate(date)));

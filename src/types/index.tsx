@@ -4,6 +4,7 @@ export interface MenuInterface {
 }
 
 export interface MenuEntityInterface {
+  id: number,
   name: string;
   menuItems: MenuItemInterface[];
 }
