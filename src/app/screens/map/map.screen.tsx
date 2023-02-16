@@ -1,9 +1,7 @@
-import { StackScreenProps } from "@react-navigation/stack/lib/typescript/src/types";
 import React from "react";
+import { StackScreenProps } from "@react-navigation/stack/lib/typescript/src/types";
 import { Image, StyleSheet, View, Text } from "react-native";
 import { BottomTabNavigatorParamList } from "../../routes/main-stack-navigator.route";
-import MapView from "react-native-maps";
-import { Marker } from "react-native-maps";
 
 /**
  * MapScreen functional component!
@@ -20,28 +18,12 @@ const MapScreen = ({
   return (
     <View style={styles.container}>
       <View style={styles.mapContainer}>
-        <MapView
-          style={styles.map}
-          initialRegion={{
-            latitude: 55.861581,
-            longitude: 37.625235,
-            latitudeDelta: 0.00522,
-            longitudeDelta: 0.00521,
-          }}
-        >
-          <Marker
-            coordinate={{
-              latitude: 55.861581,
-              longitude: 37.625235,
-            }}
-            title={"Столовая"}
-            description={"Вкусно, быстро, доступно"}
-          />
-        </MapView>
       </View>
       <View style={styles.descriptionContainer}>
         <View style={styles.description}>
-          <Text>Мы находимся по адресу: Декабристов ул., владение 51, Москва, 127490</Text>
+          <Text>
+            Мы находимся по адресу: Декабристов ул., владение 51, Москва, 127490
+          </Text>
         </View>
       </View>
     </View>
@@ -51,7 +33,7 @@ const MapScreen = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-around"
+    justifyContent: "space-around",
   },
   mapContainer: {
     flex: 5,
