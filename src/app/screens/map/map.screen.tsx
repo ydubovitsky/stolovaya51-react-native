@@ -2,6 +2,7 @@ import React from "react";
 import { StackScreenProps } from "@react-navigation/stack/lib/typescript/src/types";
 import { Image, StyleSheet, View, Text } from "react-native";
 import { BottomTabNavigatorParamList } from "../../routes/main-stack-navigator.route";
+import { WebView } from "react-native-webview";
 
 /**
  * MapScreen functional component!
@@ -17,15 +18,10 @@ const MapScreen = ({
 >): JSX.Element => {
   return (
     <View style={styles.container}>
-      <View style={styles.mapContainer}>
-      </View>
-      <View style={styles.descriptionContainer}>
-        <View style={styles.description}>
-          <Text>
-            Мы находимся по адресу: Декабристов ул., владение 51, Москва, 127490
-          </Text>
-        </View>
-      </View>
+      <WebView
+        style={styles.mapContainer}
+        source={{ uri: "https://yandex.ru/maps/213/moscow/?ll=37.625930%2C55.861486&mode=poi&poi%5Bpoint%5D=37.625437%2C55.861986&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D97079608227&z=17.82" }}
+      />
     </View>
   );
 };
@@ -33,35 +29,10 @@ const MapScreen = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-around",
   },
   mapContainer: {
-    flex: 5,
-  },
-  map: {
     width: "100%",
     height: "100%",
-  },
-  descriptionContainer: {
-    flex: 1,
-    padding: 10,
-  },
-  description: {
-    padding: "10%",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "white",
-    borderRadius: 5,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 2,
-    elevation: 3,
-    minWidth: 88,
-    marginVertical: 5,
   },
 });
 
