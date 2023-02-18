@@ -4,7 +4,7 @@ import { Image, StyleSheet, View, Text } from "react-native";
 import { BottomTabNavigatorParamList } from "../../routes/main-stack-navigator.route";
 import * as Animatable from "react-native-animatable";
 
-const foodImageSource = require("./images/pineapple-supply-co-38iDxWRpiRg-unsplash.jpg");
+const foodImageSource = require("./images/about-screen.png");
 
 /**
  * StartScreen functional component!
@@ -24,10 +24,9 @@ const AboutScreen = ({
         <Image source={foodImageSource} style={styles.image} />
       </View>
       <View style={styles.contentContainer}>
-      <Animatable.View animation="bounceInUp" duration={1500}>
+      <Animatable.View animation="fadeIn">
         <View style={styles.aboutContainer}>
-          <Text style={styles.aboutText}>Это приложение написано с</Text>
-          <Text style={styles.aboutText}>❤</Text>
+          <Text style={styles.aboutText}>Это приложение написано</Text>
           <Text style={styles.aboutText}>специльно для института точных приборов</Text>
           <Text style={styles.aboutText}>По всем вопросам и предложениям обращаться на почту:</Text>
           <Text style={styles.aboutText}>y.dubovitsky@gmail.com</Text>
@@ -48,8 +47,10 @@ const styles = StyleSheet.create({
     flex: 2,
   },
   image: {
-    width: "100%",
-    height: "100%",
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: "cover",
   },
   contentContainer: {
     flex: 4,
@@ -61,18 +62,6 @@ const styles = StyleSheet.create({
     padding: "10%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
-    borderRadius: 5,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 2,
-    elevation: 3,
-    minWidth: 88,
-    marginVertical: 5,
   },
   aboutText: {
     fontSize: 15,
