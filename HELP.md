@@ -20,3 +20,6 @@ https://docs.expo.dev/build-reference/apk/
 
 ### Create Google Developer Account
 https://gogov.ru/news/887542
+
+### SVG ICONS FREE
+https://www.svgrepo.com/vectors/books/
