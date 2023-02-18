@@ -5,7 +5,7 @@ import { BottomTabNavigatorParamList } from "../../routes/main-stack-navigator.r
 import Icon from "react-native-vector-icons/Ionicons";
 import * as Animatable from "react-native-animatable";
 
-const foodImageSource = require("./images/anna-tukhfatullina-food-photographer-stylist-Mzy-OjtCI70-unsplash.jpg");
+const foodImageSource = require("./images/account-screen.png");
 
 /**
  * StartScreen functional component!
@@ -30,13 +30,11 @@ const AccountScreen = ({
           </View>
         </View>
         <View style={styles.textContainer}>
-          <Animatable.View animation="bounceInDown" duration={1500}>
+          <Animatable.View animation="fadeIn" duration={1500}>
             <View style={styles.description}>
               <Text style={styles.text}>
-                Здесь скоро будет ваш личный кабинет
+                Здесь скоро будет ваш личный кабинет.
               </Text>
-            </View>
-            <View style={styles.description}>
               <Text style={styles.text}>
                 А пока вы можете ознакомиться с меню на сегодняшний день 😘
               </Text>
@@ -56,8 +54,10 @@ const styles = StyleSheet.create({
     flex: 2,
   },
   image: {
-    width: "100%",
-    height: "100%",
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: "cover",
   },
   contentContainer: {
     flex: 4,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   absoluteIconContainer: {
     position: "absolute",
-    top: -150,
+    top: -120,
     left: 0,
     right: 0,
     bottom: 0,
@@ -90,18 +90,6 @@ const styles = StyleSheet.create({
     flex: 5,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
-    borderRadius: 5,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 2,
-    elevation: 3,
-    minWidth: 88,
-    marginVertical: 5,
   },
   description: {
     padding: "10%",
