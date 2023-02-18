@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Столовая Нии Тп",
-    "slug": "dining-room-niitp-react-native",
+    "slug": "stolovaya51-react-native",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon_.png",
@@ -25,14 +25,14 @@
         "foregroundImage": "./assets/adaptive-icon_.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.y.dubovitsky.diningroomniitpreactnative"
+      "package": "com.ydubovitsky.stolovaya51reactnative"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "b3fddf6f-f5dc-488b-9a4f-fe992bfb94ba"
+        "projectId": "83d7dd36-fe26-43b2-b4a6-6305015e97db"
       }
     }
   }
