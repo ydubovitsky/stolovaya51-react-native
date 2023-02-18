@@ -9,13 +9,6 @@ export interface MenuEntityInterface {
   menuItems: MenuItemInterface[];
 }
 
-export interface MealItemInterface {
-  id?: number,
-  name?: string;
-  calories?: number;
-  description?: string;
-}
-
 export interface MenuItemInterface {
   id?: number;
   date?: Date;
@@ -23,6 +16,13 @@ export interface MenuItemInterface {
   mealItem?: MealItemInterface;
   cost?: number;
   portion?: string;
+  description?: string;
+}
+
+export interface MealItemInterface {
+  id?: number,
+  name?: string;
+  calories?: number;
   description?: string;
 }
 
