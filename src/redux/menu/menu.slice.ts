@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchData } from "../../services/api-call.service";
 import { RootState } from "../store";
 import { CustomDateInterface, MenuInterface, MenuStateInterface } from "../../types";
-import { BACKEND_URL } from "../../services/endpoints";
+import { BACKEND_URL } from '../../services/endpoints';
 
 // ------------------------------------ AsyncThunk ------------------------------------
 
@@ -38,7 +38,7 @@ export const getMenuByDateAsync: any = createAsyncThunk(
 
 const initialState: MenuStateInterface = {
   menu: {
-   menuEntities: [] 
+    menuEntities: []
   },
   status: "idle",
 };
@@ -76,7 +76,7 @@ export const menuSlice = createSlice({
 
 // ------------------------------------ Selectors ------------------------------------
 
-export const menuSelector = (state: RootState) : MenuInterface => state.menu.menu;
+export const menuSelector = (state: RootState): MenuInterface => state.menu.menu;
 
 // ------------------------------------ Default import ------------------------------------
 

@@ -23,3 +23,6 @@ https://gogov.ru/news/887542
 
 ### SVG ICONS FREE
 https://www.svgrepo.com/vectors/books/
+
+### Right way of using .env
+https://dev.to/bhatvikrant/how-to-add-environment-variables-in-a-react-native-project-with-ts-2ne5

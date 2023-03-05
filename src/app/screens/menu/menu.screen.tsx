@@ -1,9 +1,9 @@
 import { StackScreenProps } from "@react-navigation/stack/lib/typescript/src/types";
 import React, { useEffect, useState } from "react";
-import { Image, ScrollView, StyleSheet, View } from "react-native";
+import { Image, ScrollView, StyleSheet, View, Text } from "react-native";
 import { useDispatch } from "react-redux";
-import { dumbMenuData } from "../../../data/menu-dumb-data";
-import { getMenuByDateAsync } from "../../../redux/menu/menu.slice";
+import { useAppSelector } from "../../../redux/hooks";
+import { getMenuByDateAsync, menuSelector } from "../../../redux/menu/menu.slice";
 import { MenuInterface } from "../../../types";
 import { BottomTabNavigatorParamList } from "../../routes/main-stack-navigator.route";
 import MealTimeSlider from "./components/meal-time-slider.component";
@@ -20,7 +20,7 @@ const MenuScreen = ({
   const [date, setDate] = useState<Date>(new Date());
 
   //! Change me on production
-  const menu: MenuInterface = dumbMenuData;
+  const menu: MenuInterface = useAppSelector(menuSelector);
   const [mealTimeState, setMealTimeState] = useState<string>("Завтрак");
 
   useEffect(() => {
@@ -28,6 +28,9 @@ const MenuScreen = ({
   }, [date]);
 
   const showMenuItems = () => {
+    if(menu.menuEntities == undefined || menu.menuEntities.length == 0) {
+      return <Text>Мы не успели добавить меню на этот день, но не расстраивайтесь, мы скоро это исправим =)</Text>
+    }
     return menu.menuEntities
       .filter((entity) => entity.name == mealTimeState)
       .map((entity) =>

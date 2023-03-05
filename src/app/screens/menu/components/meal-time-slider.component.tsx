@@ -38,7 +38,7 @@ const MealTimeSlider: React.FC<MealTimeSliderProps> = ({
   return (
     <View style={styles.container}>
       <ScrollView horizontal={true}>
-        {menu.menuEntities.map((entity) => (
+        {menu.menuEntities?.map((entity) => (
           <TouchableOpacity
             style={styles.menuItem}
             key={entity.id}
