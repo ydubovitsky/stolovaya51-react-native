@@ -1,7 +1,7 @@
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
-import { useState } from "react";
-import { Button, View, Text, StyleSheet } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import { getFormattedDateString } from "../../../../utils/date.util";
 
 type MenuDatePickerComponentProps = {
   date: Date;
@@ -31,7 +31,7 @@ const MenuDatePickerComponent: React.FC<MenuDatePickerComponentProps> = ({date, 
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <Text>Выберите дату: {date.toLocaleDateString()}</Text>
+        <Text>Выберите дату: {getFormattedDateString(date, 'DD.MM.yyyy')}</Text>
       </View>
       <View style={styles.iconContainer}>
         <Icon name="ios-calendar-outline" size={20} color="red" onPress={showDatepicker} />

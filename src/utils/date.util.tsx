@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export interface CustomDateInterface {
   day: string,
   month: string,
@@ -10,4 +12,8 @@ export const convertDateToCustomDate = (date: Date) : CustomDateInterface => {
     month: `${date.getMonth() + 1}`.padStart(2, "0"),
     year: date.getFullYear()
   }
+}
+
+export const getFormattedDateString = (date: Date, format: string) : string => {
+  return moment(date).format(format);
 }

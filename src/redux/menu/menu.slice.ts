@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchData } from "../../services/api-call.service";
-import { RootState } from "../store";
-import { CustomDateInterface, MenuInterface, MenuStateInterface } from "../../types";
 import { BACKEND_URL } from '../../services/endpoints';
+import { MenuInterface, MenuStateInterface } from "../../types";
+import { getFormattedDateString } from "../../utils/date.util";
+import { RootState } from "../store";
 
 // ------------------------------------ AsyncThunk ------------------------------------
 
@@ -20,17 +21,16 @@ export const createNewMenuAsync: any = createAsyncThunk(
   }
 );
 
-export const getMenuByDateAsync: any = createAsyncThunk(
+export const getMenuByDateAsync = createAsyncThunk<MenuInterface, Date>(
   "meal/get-by-date",
   async (date: Date) => {
-    const response = await fetchData({
+    console.log(date.toLocaleDateString());
+    const responseData = await fetchData({
       method: "GET",
-      //! date.toLocaleDateString() => 2023.01.05
-      url: `${BACKEND_URL}/api/v1/menu?date=${date.toLocaleDateString()}`,
+      url: `${BACKEND_URL}/api/v1/menu?date=${getFormattedDateString(date, 'DD.MM.yyyy')}`,
       responseType: "json",
     });
-    const result = (await response) as any;
-    return result;
+    return responseData;
   }
 );
 
