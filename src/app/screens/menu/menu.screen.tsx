@@ -27,9 +27,11 @@ const MenuScreen = ({
     dispatch(getMenuByDateAsync(date));
   }, [date]);
 
+  console.log(menu);
+
   const showMenuItems = () => {
     if(menu.menuEntities == undefined || menu.menuEntities.length == 0) {
-      return <Text>Мы не успели добавить меню на этот день, но не расстраивайтесь, мы скоро это исправим =)</Text>
+      return <Text style={styles.placeholderText}>Мы не успели добавить меню на этот день, но не расстраивайтесь, мы скоро это исправим</Text>
     }
     return menu.menuEntities
       .filter((entity) => entity.name == mealTimeState)
@@ -88,6 +90,11 @@ const styles = StyleSheet.create({
   menuItemsContainer: {
     flex: 9,
   },
+  placeholderText: {
+    fontSize: 20,
+    fontFamily: "ShantellSans_400Regular",
+    textAlign: "center",
+  }
 });
 
 export default MenuScreen;

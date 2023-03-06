@@ -1,6 +1,6 @@
 import { StackScreenProps } from "@react-navigation/stack/lib/typescript/src/types";
 import React from "react";
-import { Image, StyleSheet, View, Text } from "react-native";
+import { Image, StyleSheet, View, Text, Linking } from "react-native";
 import { BottomTabNavigatorParamList } from "../../routes/main-stack-navigator.route";
 import * as Animatable from "react-native-animatable";
 
@@ -24,13 +24,26 @@ const AboutScreen = ({
         <Image source={foodImageSource} style={styles.image} />
       </View>
       <View style={styles.contentContainer}>
-      <Animatable.View animation="fadeIn">
-        <View style={styles.aboutContainer}>
-          <Text style={styles.aboutText}>Это приложение написано</Text>
-          <Text style={styles.aboutText}>специльно для института точных приборов</Text>
-          <Text style={styles.aboutText}>По всем вопросам и предложениям обращаться на почту:</Text>
-          <Text style={styles.aboutText}>y.dubovitsky@gmail.com</Text>
-        </View>
+        <Animatable.View animation="fadeIn">
+          <View style={styles.aboutContainer}>
+            <Text style={styles.aboutText}>Это приложение написано</Text>
+            <Text style={styles.aboutText}>
+              специльно для института точных приборов
+            </Text>
+            <Text style={styles.aboutText}>
+              По всем вопросам и предложениям обращаться на почту:
+            </Text>
+            <Text style={styles.aboutText}>y.dubovitsky@gmail.com</Text>
+          </View>
+          <View style={styles.aboutContainer}>
+            <Text style={styles.aboutText}>А так же посетите наш сайт:</Text>
+            <Text
+              style={{ color: "blue" }}
+              onPress={() => Linking.openURL("http://stolovaya51.ru")}
+            >
+              stolovaya51.ru
+            </Text>
+          </View>
         </Animatable.View>
       </View>
     </View>
@@ -41,7 +54,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignContent: "center",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
   },
   imageContainer: {
     flex: 2,
@@ -56,7 +69,7 @@ const styles = StyleSheet.create({
     flex: 4,
     alignContent: "center",
     justifyContent: "space-around",
-    padding: 10
+    padding: 10,
   },
   aboutContainer: {
     padding: "10%",
@@ -64,9 +77,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   aboutText: {
-    fontSize: 15,
-    textAlign: "center"
-  }
+    fontFamily: "ShantellSans_400Regular",
+    fontSize: 20,
+    textAlign: "center",
+  },
 });
 
 export default AboutScreen;

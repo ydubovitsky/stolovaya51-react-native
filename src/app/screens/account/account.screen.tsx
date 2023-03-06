@@ -32,12 +32,9 @@ const AccountScreen = ({
         <View style={styles.textContainer}>
           <Animatable.View animation="fadeIn" duration={1500}>
             <View style={styles.description}>
-              <Text style={styles.text}>
-                Здесь скоро будет ваш личный кабинет.
-              </Text>
-              <Text style={styles.text}>
-                А пока вы можете ознакомиться с меню на сегодняшний день 😘
-              </Text>
+              <Text style={styles.text}>Здесь скоро будет ваш личный кабинет</Text>
+              <Text style={styles.text}>А пока вы можете ознакомиться с меню на сегодняшний день</Text>
+              <Text style={styles.text}>😘</Text>
             </View>
           </Animatable.View>
         </View>
@@ -95,6 +92,8 @@ const styles = StyleSheet.create({
     padding: "10%",
   },
   text: {
+    fontSize: 20,
+    fontFamily: "ShantellSans_400Regular",
     textAlign: "center",
   },
 });
