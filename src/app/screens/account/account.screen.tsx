@@ -6,6 +6,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import * as Animatable from "react-native-animatable";
 
 const foodImageSource = require("./images/account-screen.png");
+const emptyAccountSource = require("./images/empty-account.png");
 
 /**
  * StartScreen functional component!
@@ -32,9 +33,7 @@ const AccountScreen = ({
         <View style={styles.textContainer}>
           <Animatable.View animation="fadeIn" duration={1500}>
             <View style={styles.description}>
-              <Text style={styles.text}>Здесь скоро будет ваш личный кабинет</Text>
-              <Text style={styles.text}>А пока вы можете ознакомиться с меню на сегодняшний день</Text>
-              <Text style={styles.text}>😘</Text>
+              <Image source={emptyAccountSource} style={styles.emptyAccountImage}/>
             </View>
           </Animatable.View>
         </View>
@@ -91,11 +90,10 @@ const styles = StyleSheet.create({
   description: {
     padding: "10%",
   },
-  text: {
-    fontSize: 20,
-    fontFamily: "ShantellSans_400Regular",
-    textAlign: "center",
-  },
+  emptyAccountImage: {
+    width: 350,
+    height: 350
+  }
 });
 
 export default AccountScreen;

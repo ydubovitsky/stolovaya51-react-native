@@ -2,8 +2,11 @@ import { StackScreenProps } from "@react-navigation/stack/lib/typescript/src/typ
 import React, { useEffect, useState } from "react";
 import { Image, ScrollView, StyleSheet, View, Text } from "react-native";
 import { useDispatch } from "react-redux";
-import { useAppSelector } from "../../../redux/hooks";
-import { getMenuByDateAsync, menuSelector } from "../../../redux/menu/menu.slice";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import {
+  getMenuByDateAsync,
+  menuSelector,
+} from "../../../redux/menu/menu.slice";
 import { MenuInterface } from "../../../types";
 import { BottomTabNavigatorParamList } from "../../routes/main-stack-navigator.route";
 import MealTimeSlider from "./components/meal-time-slider.component";
@@ -11,12 +14,13 @@ import MenuDatePickerComponent from "./components/menu-date-picker.component";
 import MenuItemComponent from "./components/menu-item.component";
 
 const imageSource = require("./images//menu-screen.png");
+const noMenuImageSource = require("./images/no-menu-for-today.png");
 
 const MenuScreen = ({
   route,
   navigation,
 }: StackScreenProps<BottomTabNavigatorParamList, "Меню">): JSX.Element => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [date, setDate] = useState<Date>(new Date());
 
   //! Change me on production
@@ -24,14 +28,12 @@ const MenuScreen = ({
   const [mealTimeState, setMealTimeState] = useState<string>("Завтрак");
 
   useEffect(() => {
-    dispatch(getMenuByDateAsync(date));
+    dispatch(() => getMenuByDateAsync(date));
   }, [date]);
 
-  console.log(menu);
-
   const showMenuItems = () => {
-    if(menu.menuEntities == undefined || menu.menuEntities.length == 0) {
-      return <Text style={styles.placeholderText}>Мы не успели добавить меню на этот день, но не расстраивайтесь, мы скоро это исправим</Text>
+    if (menu.menuEntities == undefined || menu.menuEntities.length == 0) {
+      return  <Image source={noMenuImageSource} style={styles.noMenuImage} />
     }
     return menu.menuEntities
       .filter((entity) => entity.name == mealTimeState)
@@ -49,7 +51,7 @@ const MenuScreen = ({
       </View>
       <View style={styles.menuContainer}>
         <View style={styles.menuDatePickerContainer}>
-          <MenuDatePickerComponent date={date} setDate={setDate}/>
+          <MenuDatePickerComponent date={date} setDate={setDate} />
         </View>
         <View style={styles.mealTimeSliderContainer}>
           <MealTimeSlider menu={menu} setMealTimeState={setMealTimeState} />
@@ -73,7 +75,12 @@ const styles = StyleSheet.create({
     flex: 1,
     width: null,
     height: null,
-    resizeMode: 'cover'
+    resizeMode: "cover",
+  },
+  noMenuImage: {
+    width: 300,
+    height: 300,
+    resizeMode: "contain",
   },
   menuContainer: {
     padding: 10,
@@ -81,20 +88,21 @@ const styles = StyleSheet.create({
   },
   menuDatePickerContainer: {
     flex: 1,
-    marginBottom: 10
+    marginBottom: 10,
   },
   mealTimeSliderContainer: {
     flex: 2,
-    marginBottom: 10
+    marginBottom: 10,
   },
   menuItemsContainer: {
     flex: 9,
+    alignItems: "center",
   },
   placeholderText: {
     fontSize: 20,
     fontFamily: "ShantellSans_400Regular",
     textAlign: "center",
-  }
+  },
 });
 
 export default MenuScreen;

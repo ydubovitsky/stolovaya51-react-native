@@ -5,6 +5,7 @@ import { BottomTabNavigatorParamList } from "../../routes/main-stack-navigator.r
 import * as Animatable from "react-native-animatable";
 
 const foodImageSource = require("./images/about-screen.png");
+const aboutInfoSource = require("./images/about-info.png");
 
 /**
  * StartScreen functional component!
@@ -26,14 +27,7 @@ const AboutScreen = ({
       <View style={styles.contentContainer}>
         <Animatable.View animation="fadeIn">
           <View style={styles.aboutContainer}>
-            <Text style={styles.aboutText}>Это приложение написано</Text>
-            <Text style={styles.aboutText}>
-              специльно для института точных приборов
-            </Text>
-            <Text style={styles.aboutText}>
-              По всем вопросам и предложениям обращаться на почту:
-            </Text>
-            <Text style={styles.aboutText}>y.dubovitsky@gmail.com</Text>
+            <Image source={aboutInfoSource} style={styles.aboutImage} />
           </View>
           <View style={styles.aboutContainer}>
             <Text style={styles.aboutText}>А так же посетите наш сайт:</Text>
@@ -76,10 +70,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  aboutImage: {
+    width: 350,
+    height: 350
+  },
   aboutText: {
     fontFamily: "ShantellSans_400Regular",
     fontSize: 20,
-    textAlign: "center",
+    color: "#2D5F73"
   },
 });
 
