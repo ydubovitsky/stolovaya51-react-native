@@ -1,19 +1,22 @@
 import { StackScreenProps } from "@react-navigation/stack/lib/typescript/src/types";
 import React, { useEffect, useState } from "react";
-import { Image, ScrollView, StyleSheet, View } from "react-native";
+import { Image, ScrollView, StyleSheet, View, Text } from "react-native";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
   getMenuByDateAsync,
   menuSelector,
+  menuStatusSelector,
 } from "../../../redux/menu/menu.slice";
 import { MenuInterface } from "../../../types";
 import { BottomTabNavigatorParamList } from "../../routes/main-stack-navigator.route";
 import MealTimeSlider from "./components/meal-time-slider.component";
 import MenuDatePickerComponent from "./components/menu-date-picker.component";
 import MenuItemComponent from "./components/menu-item.component";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
 
 const imageSource = require("./images//menu-screen.png");
 const noMenuImageSource = require("./images/no-menu-for-today.png");
+const goWrongImageSource = require("./images/go-wrong.png");
 
 const MenuScreen = ({
   route,
@@ -24,6 +27,7 @@ const MenuScreen = ({
 
   //! Change me on production
   const menu: MenuInterface = useAppSelector(menuSelector);
+  const menuStatus: string = useAppSelector(menuStatusSelector);
   const [mealTimeState, setMealTimeState] = useState<string>("Завтрак");
 
   useEffect(() => {
@@ -31,7 +35,13 @@ const MenuScreen = ({
   }, [date]);
 
   const showMenuItems = () => {
-    if (menu.menuEntities == undefined || menu.menuEntities.length == 0) {
+    if (menuStatus === "loading") {
+      return <ActivityIndicator animating={true} color={MD2Colors.blue600} size={"large"}/>;
+    }
+    if (menuStatus === "failed" ) {
+      return <Image source={goWrongImageSource} style={styles.noMenuImage} />;
+    }
+    if (menuStatus === "loaded" && menu.menuEntities == undefined) {
       return <Image source={noMenuImageSource} style={styles.noMenuImage} />;
     }
     return (

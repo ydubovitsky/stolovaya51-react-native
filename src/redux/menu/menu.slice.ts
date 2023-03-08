@@ -76,6 +76,7 @@ export const menuSlice = createSlice({
 // ------------------------------------ Selectors ------------------------------------
 
 export const menuSelector = (state: RootState): MenuInterface => state.menu.menu;
+export const menuStatusSelector = (state: RootState): string => state.menu.status;
 
 // ------------------------------------ Default import ------------------------------------
 
