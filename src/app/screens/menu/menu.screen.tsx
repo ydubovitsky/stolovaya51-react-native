@@ -1,7 +1,6 @@
 import { StackScreenProps } from "@react-navigation/stack/lib/typescript/src/types";
 import React, { useEffect, useState } from "react";
-import { Image, ScrollView, StyleSheet, View, Text } from "react-native";
-import { useDispatch } from "react-redux";
+import { Image, ScrollView, StyleSheet, View } from "react-native";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
   getMenuByDateAsync,
@@ -28,20 +27,26 @@ const MenuScreen = ({
   const [mealTimeState, setMealTimeState] = useState<string>("Завтрак");
 
   useEffect(() => {
-    dispatch(() => getMenuByDateAsync(date));
+    dispatch(getMenuByDateAsync(date));
   }, [date]);
 
   const showMenuItems = () => {
     if (menu.menuEntities == undefined || menu.menuEntities.length == 0) {
-      return  <Image source={noMenuImageSource} style={styles.noMenuImage} />
+      return <Image source={noMenuImageSource} style={styles.noMenuImage} />;
     }
-    return menu.menuEntities
-      .filter((entity) => entity.name == mealTimeState)
-      .map((entity) =>
-        entity.menuItems.map((menuItem) => {
-          return <MenuItemComponent menuItem={menuItem} key={menuItem.id} />;
-        })
-      );
+    return (
+      <ScrollView>
+        {menu.menuEntities
+          .filter((entity) => entity.name == mealTimeState)
+          .map((entity) =>
+            entity.menuItems.map((menuItem) => {
+              return (
+                <MenuItemComponent menuItem={menuItem} key={menuItem.id} />
+              );
+            })
+          )}
+      </ScrollView>
+    );
   };
 
   return (
@@ -56,9 +61,7 @@ const MenuScreen = ({
         <View style={styles.mealTimeSliderContainer}>
           <MealTimeSlider menu={menu} setMealTimeState={setMealTimeState} />
         </View>
-        <View style={styles.menuItemsContainer}>
-          <ScrollView>{showMenuItems()}</ScrollView>
-        </View>
+        <View style={styles.menuItemsContainer}>{showMenuItems()}</View>
       </View>
     </View>
   );
@@ -78,8 +81,9 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   noMenuImage: {
-    width: 300,
-    height: 300,
+    flex: 1,
+    width: null,
+    height: null,
     resizeMode: "contain",
   },
   menuContainer: {
@@ -96,7 +100,6 @@ const styles = StyleSheet.create({
   },
   menuItemsContainer: {
     flex: 9,
-    alignItems: "center",
   },
   placeholderText: {
     fontSize: 20,

@@ -24,7 +24,6 @@ export const createNewMenuAsync: any = createAsyncThunk(
 export const getMenuByDateAsync = createAsyncThunk<MenuInterface, Date>(
   "meal/get-by-date",
   async (date: Date) => {
-    console.log(date.toLocaleDateString());
     const responseData = await fetchData({
       method: "GET",
       url: `${BACKEND_URL}/api/v1/menu?date=${getFormattedDateString(date, 'DD.MM.yyyy')}`,
