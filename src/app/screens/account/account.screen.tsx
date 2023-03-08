@@ -30,12 +30,8 @@ const AccountScreen = ({
             </View>
           </View>
         </View>
-        <View style={styles.textContainer}>
-          <Animatable.View animation="fadeIn" duration={1500}>
-            <View style={styles.description}>
-              <Image source={emptyAccountSource} style={styles.emptyAccountImage}/>
-            </View>
-          </Animatable.View>
+        <View style={styles.descriptionContainer}>
+          <Image source={emptyAccountSource} style={styles.emptyAccountImage} />
         </View>
       </View>
     </View>
@@ -64,7 +60,7 @@ const styles = StyleSheet.create({
   },
   absoluteIconContainer: {
     position: "absolute",
-    top: -120,
+    top: -200,
     left: 0,
     right: 0,
     bottom: 0,
@@ -82,18 +78,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  textContainer: {
-    flex: 5,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  description: {
-    padding: "10%",
+  descriptionContainer: {
+    flex: 2,
   },
   emptyAccountImage: {
-    width: 350,
-    height: 350
-  }
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: "contain",
+  },
 });
 
 export default AccountScreen;
